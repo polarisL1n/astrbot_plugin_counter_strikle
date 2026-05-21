@@ -727,5 +727,1078 @@
     ],
     "hint": "这名选手是丹麦步枪手，少年成名。",
     "trivia": "他长期被视为丹麦新生代核心之一。"
+  },
+  {
+    "id": "brollan",
+    "name": "Brollan",
+    "aliases": [
+      "Ludvig Brolin"
+    ],
+    "age": 24,
+    "country": "Sweden",
+    "continent": "Europe",
+    "team": "MOUZ",
+    "majors": 10,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手来自瑞典，ID 很像一个常见昵称。",
+    "trivia": "他很早就在瑞典 CS 圈打出名气，后来进入国际阵容。"
+  },
+  {
+    "id": "hunter",
+    "name": "huNter-",
+    "aliases": [
+      "Nemanja Kovac",
+      "hunter"
+    ],
+    "age": 30,
+    "country": "Bosnia and Herzegovina",
+    "continent": "Europe",
+    "team": "G2",
+    "majors": 14,
+    "roles": [
+      "Rifler",
+      "Lurker"
+    ],
+    "hint": "答案选手和另一位巴尔干明星选手有亲属关系。",
+    "trivia": "他的 ID 末尾带一个短横线，很有辨识度。"
+  },
+  {
+    "id": "malbsmd",
+    "name": "malbsMd",
+    "aliases": [
+      "Mario Samayoa",
+      "malbs"
+    ],
+    "age": 23,
+    "country": "Guatemala",
+    "continent": "North America",
+    "team": "G2",
+    "majors": 3,
+    "roles": [
+      "Rifler",
+      "Entry"
+    ],
+    "hint": "答案选手来自中美洲，突破火力标签明显。",
+    "trivia": "危地马拉选手出现在顶级 CS 阵容里并不常见。"
+  },
+  {
+    "id": "snax",
+    "name": "Snax",
+    "aliases": [
+      "Janusz Pogorzelski"
+    ],
+    "age": 32,
+    "country": "Poland",
+    "continent": "Europe",
+    "team": "G2",
+    "majors": 18,
+    "roles": [
+      "IGL",
+      "Rifler"
+    ],
+    "hint": "答案选手是波兰老将，曾是传奇阵容成员。",
+    "trivia": "他的 ID 和零食有关，职业寿命也很长。"
+  },
+  {
+    "id": "sunpayus",
+    "name": "SunPayus",
+    "aliases": [
+      "Alvaro Garcia"
+    ],
+    "age": 27,
+    "country": "Spain",
+    "continent": "Europe",
+    "team": "HEROIC",
+    "majors": 7,
+    "roles": [
+      "AWPer"
+    ],
+    "hint": "答案选手来自西班牙，是主狙位。",
+    "trivia": "西班牙主狙在国际顶级队伍里很有辨识度。"
+  },
+  {
+    "id": "sjuush",
+    "name": "sjuush",
+    "aliases": [
+      "Rasmus Beck"
+    ],
+    "age": 27,
+    "country": "Denmark",
+    "continent": "Europe",
+    "team": "HEROIC",
+    "majors": 11,
+    "roles": [
+      "Rifler",
+      "Support"
+    ],
+    "hint": "答案选手是丹麦团队型步枪手。",
+    "trivia": "他的 ID 对中文玩家来说不太好念，但很容易记住。"
+  },
+  {
+    "id": "electronic",
+    "name": "electroNic",
+    "aliases": [
+      "Denis Sharipov",
+      "electronic"
+    ],
+    "age": 27,
+    "country": "Russia",
+    "continent": "Europe",
+    "team": "Virtus.pro",
+    "majors": 18,
+    "roles": [
+      "Rifler",
+      "IGL"
+    ],
+    "hint": "答案选手来自独联体，既能当明星步枪也当过指挥。",
+    "trivia": "他曾长期是 NAVI 火力核心之一。"
+  },
+  {
+    "id": "fl1t",
+    "name": "FL1T",
+    "aliases": [
+      "Evgenii Lebedev",
+      "flit"
+    ],
+    "age": 25,
+    "country": "Russia",
+    "continent": "Europe",
+    "team": "Virtus.pro",
+    "majors": 10,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手是独联体步枪手，ID 里有数字 1。",
+    "trivia": "他在 VP/Outsiders 体系里打过很久。"
+  },
+  {
+    "id": "fame",
+    "name": "fame",
+    "aliases": [
+      "Petr Bolyshev"
+    ],
+    "age": 22,
+    "country": "Russia",
+    "continent": "Europe",
+    "team": "Virtus.pro",
+    "majors": 8,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手是 VP 体系里的年轻步枪手。",
+    "trivia": "他的 ID 是一个很普通但很有气势的英文词。"
+  },
+  {
+    "id": "jame",
+    "name": "Jame",
+    "aliases": [
+      "Dzhami Ali"
+    ],
+    "age": 27,
+    "country": "Russia",
+    "continent": "Europe",
+    "team": "PARIVISION",
+    "majors": 14,
+    "roles": [
+      "IGL",
+      "AWPer"
+    ],
+    "hint": "答案选手是独联体经典保枪文化代表。",
+    "trivia": "Jame Time 是 CS 圈非常有名的梗。"
+  },
+  {
+    "id": "icy",
+    "name": "ICY",
+    "aliases": [
+      "Kaisar Faiznurov"
+    ],
+    "age": 21,
+    "country": "Kazakhstan",
+    "continent": "Asia",
+    "team": "Virtus.pro",
+    "majors": 3,
+    "roles": [
+      "AWPer"
+    ],
+    "hint": "答案选手来自哈萨克斯坦，是年轻狙击手。",
+    "trivia": "他的 ID 看起来就很冷。"
+  },
+  {
+    "id": "ax1le",
+    "name": "Ax1Le",
+    "aliases": [
+      "Sergey Rykhtorov",
+      "axile"
+    ],
+    "age": 24,
+    "country": "Russia",
+    "continent": "Europe",
+    "team": "BetBoom",
+    "majors": 9,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手是独联体明星步枪手，ID 里有数字 1。",
+    "trivia": "他曾是 Gambit/Cloud9 核心阵容的重要火力点。"
+  },
+  {
+    "id": "boombl4",
+    "name": "Boombl4",
+    "aliases": [
+      "Kirill Mikhailov",
+      "boomblich"
+    ],
+    "age": 27,
+    "country": "Russia",
+    "continent": "Europe",
+    "team": "BetBoom",
+    "majors": 12,
+    "roles": [
+      "IGL",
+      "Rifler"
+    ],
+    "hint": "答案选手是独联体指挥，ID 写法很有记忆点。",
+    "trivia": "他曾在 NAVI 夺冠周期中担任指挥。"
+  },
+  {
+    "id": "heavygod",
+    "name": "HeavyGod",
+    "aliases": [
+      "Nikita Martynenko"
+    ],
+    "age": 23,
+    "country": "Israel",
+    "continent": "Asia",
+    "team": "Cloud9",
+    "majors": 4,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手来自以色列，ID 很霸气。",
+    "trivia": "他的 ID 直译起来就很有压迫感。"
+  },
+  {
+    "id": "rez",
+    "name": "REZ",
+    "aliases": [
+      "Fredrik Sterner"
+    ],
+    "age": 28,
+    "country": "Sweden",
+    "continent": "Europe",
+    "team": "NIP",
+    "majors": 15,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手是瑞典老牌步枪手。",
+    "trivia": "他长期和 NIP 这个名字绑定在一起。"
+  },
+  {
+    "id": "r1nkle",
+    "name": "r1nkle",
+    "aliases": [
+      "Artem Moroz"
+    ],
+    "age": 21,
+    "country": "Ukraine",
+    "continent": "Europe",
+    "team": "NIP",
+    "majors": 3,
+    "roles": [
+      "AWPer"
+    ],
+    "hint": "答案选手是乌克兰年轻狙击手，ID 里有数字 1。",
+    "trivia": "他是近年来 NIP 狙击位重建中的关键新人。"
+  },
+  {
+    "id": "maj3r",
+    "name": "MAJ3R",
+    "aliases": [
+      "Engin Kupeli",
+      "major"
+    ],
+    "age": 35,
+    "country": "Turkey",
+    "continent": "Asia",
+    "team": "Eternal Fire",
+    "majors": 9,
+    "roles": [
+      "IGL",
+      "Rifler"
+    ],
+    "hint": "答案选手是土耳其老牌指挥。",
+    "trivia": "他的 ID 看起来像 Major，但中间有个 3。"
+  },
+  {
+    "id": "wicadia",
+    "name": "Wicadia",
+    "aliases": [
+      "Ali Haydar Yalcin"
+    ],
+    "age": 20,
+    "country": "Turkey",
+    "continent": "Asia",
+    "team": "Eternal Fire",
+    "majors": 4,
+    "roles": [
+      "Rifler",
+      "Entry"
+    ],
+    "hint": "答案选手是土耳其年轻枪男。",
+    "trivia": "他是 Eternal Fire 新生代火力的重要代表。"
+  },
+  {
+    "id": "calyx",
+    "name": "Calyx",
+    "aliases": [
+      "Bugra Arkin"
+    ],
+    "age": 27,
+    "country": "Turkey",
+    "continent": "Asia",
+    "team": "Eternal Fire",
+    "majors": 8,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手来自土耳其，是老牌步枪手。",
+    "trivia": "他是土耳其 CS 国际化早期的熟面孔之一。"
+  },
+  {
+    "id": "xantares",
+    "name": "XANTARES",
+    "aliases": [
+      "Can Dortkardes"
+    ],
+    "age": 30,
+    "country": "Turkey",
+    "continent": "Asia",
+    "team": "Eternal Fire",
+    "majors": 12,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手是土耳其最知名的瞄准怪之一。",
+    "trivia": "XANTARES peek 是 CS 圈非常有名的说法。"
+  },
+  {
+    "id": "blitz",
+    "name": "bLitz",
+    "aliases": [
+      "Garidmagnai Byambasuren",
+      "blitz"
+    ],
+    "age": 24,
+    "country": "Mongolia",
+    "continent": "Asia",
+    "team": "TheMongolz",
+    "majors": 6,
+    "roles": [
+      "IGL",
+      "Rifler"
+    ],
+    "hint": "答案选手是蒙古队伍的大脑。",
+    "trivia": "他是 TheMongolz 在国际赛场崛起的重要指挥。"
+  },
+  {
+    "id": "techno4k",
+    "name": "Techno4K",
+    "aliases": [
+      "Sodbayar Munkhbold",
+      "Techno"
+    ],
+    "age": 21,
+    "country": "Mongolia",
+    "continent": "Asia",
+    "team": "TheMongolz",
+    "majors": 6,
+    "roles": [
+      "Rifler",
+      "Entry"
+    ],
+    "hint": "答案选手来自蒙古，ID 里带 4K。",
+    "trivia": "他是 TheMongolz 年轻火力代表之一。"
+  },
+  {
+    "id": "910",
+    "name": "910",
+    "aliases": [
+      "Usukhbayar Banzragch"
+    ],
+    "age": 23,
+    "country": "Mongolia",
+    "continent": "Asia",
+    "team": "TheMongolz",
+    "majors": 5,
+    "roles": [
+      "AWPer"
+    ],
+    "hint": "答案选手是蒙古主狙，ID 是纯数字。",
+    "trivia": "纯数字 ID 在选手库里非常好认。"
+  },
+  {
+    "id": "mzinho",
+    "name": "mzinho",
+    "aliases": [
+      "Ayush Batbold"
+    ],
+    "age": 18,
+    "country": "Mongolia",
+    "continent": "Asia",
+    "team": "TheMongolz",
+    "majors": 5,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手是蒙古新生代，年龄非常小。",
+    "trivia": "他是 TheMongolz 年轻化阵容里的代表。"
+  },
+  {
+    "id": "senzu",
+    "name": "Senzu",
+    "aliases": [
+      "Azbayar Munkhbold"
+    ],
+    "age": 18,
+    "country": "Mongolia",
+    "continent": "Asia",
+    "team": "TheMongolz",
+    "majors": 4,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手来自蒙古，是很年轻的步枪手。",
+    "trivia": "他的 ID 听起来很像动漫角色名。"
+  },
+  {
+    "id": "jamyoung",
+    "name": "JamYoung",
+    "aliases": [
+      "Yi Yang",
+      "杨一",
+      "jamyoung"
+    ],
+    "age": 23,
+    "country": "China",
+    "continent": "Asia",
+    "team": "TYLOO",
+    "majors": 5,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手是中国步枪手，名字里有 Young。",
+    "trivia": "他长期被视为中国 CS 的明星枪男之一。"
+  },
+  {
+    "id": "mercury",
+    "name": "Mercury",
+    "aliases": [
+      "Zhenghao Wang",
+      "王政豪"
+    ],
+    "age": 24,
+    "country": "China",
+    "continent": "Asia",
+    "team": "TYLOO",
+    "majors": 4,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手来自中国，ID 是一颗行星。",
+    "trivia": "Mercury 这个 ID 在中文里也很容易记。"
+  },
+  {
+    "id": "kaze",
+    "name": "kaze",
+    "aliases": [
+      "Andrew Khong",
+      "凯泽"
+    ],
+    "age": 31,
+    "country": "Malaysia",
+    "continent": "Asia",
+    "team": "TYLOO",
+    "majors": 7,
+    "roles": [
+      "AWPer"
+    ],
+    "hint": "答案选手是亚洲老牌狙击手，曾长期活跃在中国队伍。",
+    "trivia": "他的 ID 在日语里有“风”的味道。"
+  },
+  {
+    "id": "advent",
+    "name": "advent",
+    "aliases": [
+      "Hui Xu",
+      "徐辉"
+    ],
+    "age": 33,
+    "country": "China",
+    "continent": "Asia",
+    "team": "TYLOO",
+    "majors": 9,
+    "roles": [
+      "IGL",
+      "Rifler"
+    ],
+    "hint": "答案选手是中国老牌指挥。",
+    "trivia": "他是中国 CS 里非常有代表性的老将之一。"
+  },
+  {
+    "id": "jee",
+    "name": "Jee",
+    "aliases": [
+      "Jee China"
+    ],
+    "age": 22,
+    "country": "China",
+    "continent": "Asia",
+    "team": "TYLOO",
+    "majors": 3,
+    "roles": [
+      "AWPer"
+    ],
+    "hint": "答案选手是中国年轻狙击手。",
+    "trivia": "他的 ID 很短，猜起来容易和普通词混淆。"
+  },
+  {
+    "id": "moseyuh",
+    "name": "Moseyuh",
+    "aliases": [
+      "Chen Qianhao",
+      "陈乾豪"
+    ],
+    "age": 23,
+    "country": "China",
+    "continent": "Asia",
+    "team": "Lynn Vision",
+    "majors": 4,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手是中国步枪手，ID 很有辨识度。",
+    "trivia": "他是 Lynn Vision 国际赛场表现里的熟面孔。"
+  },
+  {
+    "id": "westmelon",
+    "name": "Westmelon",
+    "aliases": [
+      "西瓜",
+      "west melon"
+    ],
+    "age": 25,
+    "country": "China",
+    "continent": "Asia",
+    "team": "Lynn Vision",
+    "majors": 4,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手是中国选手，ID 像一个水果。",
+    "trivia": "这个 ID 对中文玩家来说非常好记。"
+  },
+  {
+    "id": "starry",
+    "name": "Starry",
+    "aliases": [
+      "Li Peng",
+      "李鹏"
+    ],
+    "age": 19,
+    "country": "China",
+    "continent": "Asia",
+    "team": "Lynn Vision",
+    "majors": 3,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手是中国新生代步枪手。",
+    "trivia": "他的 ID 有星空感，很适合高光集锦。"
+  },
+  {
+    "id": "z4kr",
+    "name": "z4kr",
+    "aliases": [
+      "Zhuo Wang",
+      "王卓"
+    ],
+    "age": 21,
+    "country": "China",
+    "continent": "Asia",
+    "team": "Lynn Vision",
+    "majors": 3,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手是中国步枪手，ID 里有数字 4。",
+    "trivia": "他是中国年轻枪男里常被提到的名字。"
+  },
+  {
+    "id": "somebody",
+    "name": "somebody",
+    "aliases": [
+      "Haowen Xu",
+      "徐昊文"
+    ],
+    "age": 29,
+    "country": "China",
+    "continent": "Asia",
+    "team": "TYLOO",
+    "majors": 10,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手是中国老熟人，ID 是一个英文代词。",
+    "trivia": "somebody 是很多老玩家非常熟悉的中国 CS 名字。"
+  },
+  {
+    "id": "skullz",
+    "name": "skullz",
+    "aliases": [
+      "Felipe Medeiros"
+    ],
+    "age": 23,
+    "country": "Brazil",
+    "continent": "South America",
+    "team": "FURIA",
+    "majors": 5,
+    "roles": [
+      "Rifler",
+      "Support"
+    ],
+    "hint": "答案选手来自巴西，ID 和骷髅有关。",
+    "trivia": "他曾在国际阵容和巴西阵容之间切换。"
+  },
+  {
+    "id": "biguzera",
+    "name": "biguzera",
+    "aliases": [
+      "Rodrigo Bittencourt"
+    ],
+    "age": 28,
+    "country": "Brazil",
+    "continent": "South America",
+    "team": "paiN",
+    "majors": 7,
+    "roles": [
+      "IGL",
+      "Rifler"
+    ],
+    "hint": "答案选手是巴西指挥，ID 很巴西味。",
+    "trivia": "他是 paiN 体系里的核心人物。"
+  },
+  {
+    "id": "nqz",
+    "name": "nqz",
+    "aliases": [
+      "Lucas Soares"
+    ],
+    "age": 20,
+    "country": "Brazil",
+    "continent": "South America",
+    "team": "paiN",
+    "majors": 5,
+    "roles": [
+      "AWPer"
+    ],
+    "hint": "答案选手是巴西年轻狙击手，ID 很短。",
+    "trivia": "三个字母的 ID 在聊天里很容易被误打。"
+  },
+  {
+    "id": "lux",
+    "name": "lux",
+    "aliases": [
+      "Lucas Meneghini"
+    ],
+    "age": 22,
+    "country": "Brazil",
+    "continent": "South America",
+    "team": "paiN",
+    "majors": 4,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手来自巴西，ID 像光照单位。",
+    "trivia": "他的 ID 很短，但在巴西 CS 圈辨识度不低。"
+  },
+  {
+    "id": "dumau",
+    "name": "dumau",
+    "aliases": [
+      "Eduardo Wolkmer"
+    ],
+    "age": 22,
+    "country": "Brazil",
+    "continent": "South America",
+    "team": "Legacy",
+    "majors": 5,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手是巴西年轻步枪手。",
+    "trivia": "他在巴西新生代里很早就被关注。"
+  },
+  {
+    "id": "latto",
+    "name": "latto",
+    "aliases": [
+      "Bruno Rebelatto"
+    ],
+    "age": 23,
+    "country": "Brazil",
+    "continent": "South America",
+    "team": "Legacy",
+    "majors": 5,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手来自巴西，常和 Legacy 体系联系在一起。",
+    "trivia": "他的真名和 ID 有一点音节上的联系。"
+  },
+  {
+    "id": "try",
+    "name": "try",
+    "aliases": [
+      "Santino Rigal"
+    ],
+    "age": 21,
+    "country": "Argentina",
+    "continent": "South America",
+    "team": "9z",
+    "majors": 5,
+    "roles": [
+      "AWPer"
+    ],
+    "hint": "答案选手来自阿根廷，是主狙。",
+    "trivia": "他的 ID 是一个非常常见的英文动词。"
+  },
+  {
+    "id": "max",
+    "name": "max",
+    "aliases": [
+      "Maximiliano Gonzalez"
+    ],
+    "age": 25,
+    "country": "Uruguay",
+    "continent": "South America",
+    "team": "9z",
+    "majors": 5,
+    "roles": [
+      "IGL",
+      "Rifler"
+    ],
+    "hint": "答案选手来自乌拉圭，名字非常短。",
+    "trivia": "南美 CS 里乌拉圭选手在顶级舞台上并不多。"
+  },
+  {
+    "id": "dgt",
+    "name": "dgt",
+    "aliases": [
+      "Franco Garcia"
+    ],
+    "age": 24,
+    "country": "Uruguay",
+    "continent": "South America",
+    "team": "9z",
+    "majors": 5,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手来自乌拉圭，是南美步枪手。",
+    "trivia": "他的 ID 是三个小写字母。"
+  },
+  {
+    "id": "dav1deus",
+    "name": "dav1deuS",
+    "aliases": [
+      "David Tapia Maldonado",
+      "davideus"
+    ],
+    "age": 25,
+    "country": "Chile",
+    "continent": "South America",
+    "team": "9z",
+    "majors": 4,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手来自智利，ID 里有数字 1。",
+    "trivia": "智利选手出现在国际赛事里也很有辨识度。"
+  },
+  {
+    "id": "s1mple",
+    "name": "s1mple",
+    "aliases": [
+      "Oleksandr Kostyliev",
+      "simple",
+      "森破"
+    ],
+    "age": 28,
+    "country": "Ukraine",
+    "continent": "Europe",
+    "team": "Inactive",
+    "majors": 14,
+    "roles": [
+      "AWPer",
+      "Rifler"
+    ],
+    "hint": "答案选手是 CS 历史级巨星，ID 里有数字 1。",
+    "trivia": "很多人会把他放进史上最佳选手讨论。"
+  },
+  {
+    "id": "coldzera",
+    "name": "coldzera",
+    "aliases": [
+      "Marcelo David"
+    ],
+    "age": 31,
+    "country": "Brazil",
+    "continent": "South America",
+    "team": "Legacy",
+    "majors": 15,
+    "roles": [
+      "Rifler",
+      "Lurker"
+    ],
+    "hint": "答案选手是巴西传奇步枪手。",
+    "trivia": "他的跳狙高光是 CS 历史名场面之一。"
+  },
+  {
+    "id": "olofmeister",
+    "name": "olofmeister",
+    "aliases": [
+      "Olof Kajbjer",
+      "olof"
+    ],
+    "age": 34,
+    "country": "Sweden",
+    "continent": "Europe",
+    "team": "Inactive",
+    "majors": 20,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手是瑞典传奇，曾是 Fnatic 王朝成员。",
+    "trivia": "olofboost 是 CS 历史上绕不开的事件。"
+  },
+  {
+    "id": "get_right",
+    "name": "GeT_RiGhT",
+    "aliases": [
+      "Christopher Alesund",
+      "getright"
+    ],
+    "age": 36,
+    "country": "Sweden",
+    "continent": "Europe",
+    "team": "Retired",
+    "majors": 16,
+    "roles": [
+      "Rifler",
+      "Lurker"
+    ],
+    "hint": "答案选手是瑞典传奇 lurker。",
+    "trivia": "他是早期 CS:GO 最具统治力的明星之一。"
+  },
+  {
+    "id": "forest",
+    "name": "f0rest",
+    "aliases": [
+      "Patrik Lindberg",
+      "forest"
+    ],
+    "age": 38,
+    "country": "Sweden",
+    "continent": "Europe",
+    "team": "Retired",
+    "majors": 18,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手是瑞典传奇，ID 里有数字 0。",
+    "trivia": "他的职业跨度非常长，是很多老玩家的青春。"
+  },
+  {
+    "id": "guardian",
+    "name": "GuardiaN",
+    "aliases": [
+      "Ladislav Kovacs",
+      "guardian"
+    ],
+    "age": 34,
+    "country": "Slovakia",
+    "continent": "Europe",
+    "team": "Retired",
+    "majors": 15,
+    "roles": [
+      "AWPer"
+    ],
+    "hint": "答案选手是斯洛伐克传奇狙击手。",
+    "trivia": "他曾是 NaVi 和 FaZe 的明星主狙。"
+  },
+  {
+    "id": "kennys",
+    "name": "kennyS",
+    "aliases": [
+      "Kenny Schrub"
+    ],
+    "age": 31,
+    "country": "France",
+    "continent": "Europe",
+    "team": "Retired",
+    "majors": 14,
+    "roles": [
+      "AWPer"
+    ],
+    "hint": "答案选手是法国传奇狙击手。",
+    "trivia": "他的 AWP 风格影响了一整代玩家。"
+  },
+  {
+    "id": "shox",
+    "name": "shox",
+    "aliases": [
+      "Richard Papillon"
+    ],
+    "age": 34,
+    "country": "France",
+    "continent": "Europe",
+    "team": "Retired",
+    "majors": 17,
+    "roles": [
+      "Rifler",
+      "Lurker"
+    ],
+    "hint": "答案选手是法国老牌残局大师。",
+    "trivia": "他以细腻残局和个人创造力闻名。"
+  },
+  {
+    "id": "dupreeh",
+    "name": "dupreeh",
+    "aliases": [
+      "Peter Rasmussen"
+    ],
+    "age": 33,
+    "country": "Denmark",
+    "continent": "Europe",
+    "team": "Inactive",
+    "majors": 22,
+    "roles": [
+      "Rifler",
+      "Entry"
+    ],
+    "hint": "答案选手是丹麦传奇突破手。",
+    "trivia": "他是 Major 冠军履历最厚的选手之一。"
+  },
+  {
+    "id": "gla1ve",
+    "name": "gla1ve",
+    "aliases": [
+      "Lukas Rossander",
+      "glaive"
+    ],
+    "age": 31,
+    "country": "Denmark",
+    "continent": "Europe",
+    "team": "ENCE",
+    "majors": 20,
+    "roles": [
+      "IGL",
+      "Rifler"
+    ],
+    "hint": "答案选手是丹麦传奇指挥，ID 里有数字 1。",
+    "trivia": "他是 Astralis 王朝战术体系的核心人物。"
+  },
+  {
+    "id": "jw",
+    "name": "JW",
+    "aliases": [
+      "Jesper Wecksell"
+    ],
+    "age": 31,
+    "country": "Sweden",
+    "continent": "Europe",
+    "team": "Retired",
+    "majors": 17,
+    "roles": [
+      "AWPer",
+      "Rifler"
+    ],
+    "hint": "答案选手是瑞典传奇，曾是 Fnatic 风格的代表人物。",
+    "trivia": "他的打法非常大胆，很多老玩家印象很深。"
+  },
+  {
+    "id": "flusha",
+    "name": "flusha",
+    "aliases": [
+      "Robin Ronnquist"
+    ],
+    "age": 32,
+    "country": "Sweden",
+    "continent": "Europe",
+    "team": "Retired",
+    "majors": 17,
+    "roles": [
+      "Rifler",
+      "Support"
+    ],
+    "hint": "答案选手是瑞典传奇，常和 Fnatic 王朝联系在一起。",
+    "trivia": "他以意识和残局判断闻名，也留下过很多梗。"
+  },
+  {
+    "id": "xyp9x",
+    "name": "Xyp9x",
+    "aliases": [
+      "Andreas Hojsleth",
+      "xyp"
+    ],
+    "age": 30,
+    "country": "Denmark",
+    "continent": "Europe",
+    "team": "Inactive",
+    "majors": 21,
+    "roles": [
+      "Rifler",
+      "Support"
+    ],
+    "hint": "答案选手是丹麦残局大师。",
+    "trivia": "Clutch Minister 是他最有名的标签。"
+  },
+  {
+    "id": "cadian",
+    "name": "cadiaN",
+    "aliases": [
+      "Casper Moller"
+    ],
+    "age": 30,
+    "country": "Denmark",
+    "continent": "Europe",
+    "team": "Liquid",
+    "majors": 16,
+    "roles": [
+      "IGL",
+      "AWPer"
+    ],
+    "hint": "答案选手是丹麦指挥兼狙击手，情绪感染力很强。",
+    "trivia": "他的残局喊叫和舞台表现都很有记忆点。"
+  },
+  {
+    "id": "jabbi",
+    "name": "jabbi",
+    "aliases": [
+      "Jakob Nygaard"
+    ],
+    "age": 22,
+    "country": "Denmark",
+    "continent": "Europe",
+    "team": "Astralis",
+    "majors": 8,
+    "roles": [
+      "Rifler"
+    ],
+    "hint": "答案选手是丹麦年轻步枪手。",
+    "trivia": "他曾在 Heroic 体系中打出很高关注度。"
   }
 ]
