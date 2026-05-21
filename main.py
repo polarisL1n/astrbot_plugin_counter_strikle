@@ -12,6 +12,7 @@ try:
         should_show_hint,
         template_comment,
     )
+    from .counter_strikle.matcher import suggest_players
     from .counter_strikle.solver import filter_candidates, recommend_guess
     from .counter_strikle.storage import InMemorySessionStore, build_session_key
 except ImportError:
@@ -22,6 +23,7 @@ except ImportError:
         should_show_hint,
         template_comment,
     )
+    from counter_strikle.matcher import suggest_players
     from counter_strikle.solver import filter_candidates, recommend_guess
     from counter_strikle.storage import InMemorySessionStore, build_session_key
 
@@ -128,7 +130,7 @@ def handle_command_response(
         try:
             result = session.game.guess(arg)
         except ValueError as exc:
-            return CommandResponse(str(exc))
+            return CommandResponse(unknown_player_text(arg, session.game.players))
 
         lines = [
             f"第 {result.guess_count}/{result.max_guesses} 猜：{result.guess.name}",
@@ -216,6 +218,18 @@ def normalize_command(message: str) -> str:
             return f"/cs猜 {stripped[len(prefix):].strip()}"
 
     return stripped
+
+
+def unknown_player_text(query: str, players) -> str:
+    suggestions = suggest_players(query, players)
+    lines = [f"没找到选手：{query}"]
+    if suggestions:
+        lines.append("你是不是想猜：")
+        lines.extend(f"{index}. {player.name}" for index, player in enumerate(suggestions, start=1))
+        lines.append("可以发送：猜选手 猜 <选手名>")
+    else:
+        lines.append("当前本地选手库还没有这个人，可以换个 ID 试试。")
+    return "\n".join(lines)
 
 
 def is_counter_strikle_command(message: str) -> bool:

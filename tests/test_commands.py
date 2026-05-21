@@ -65,3 +65,12 @@ def test_guess_response_exposes_llm_prompt_for_adapter():
 
     assert response.llm_prompt
     assert response.llm_fallback
+
+
+def test_unknown_player_message_is_localized_with_suggestions():
+    handle_command("猜选手 开始", platform="unknown-test", group_id="group-1", user_id="user-1")
+
+    text = handle_command("猜选手 猜 s1mple", platform="unknown-test", group_id="group-1", user_id="user-1")
+
+    assert "没找到选手：s1mple" in text
+    assert "Unknown player" not in text
