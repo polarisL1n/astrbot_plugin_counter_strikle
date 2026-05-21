@@ -1,11 +1,26 @@
 from __future__ import annotations
 
+from dataclasses import dataclass
 from typing import Any
 
 try:
+    from .counter_strikle.commentary import (
+        build_llm_comment_prompt,
+        player_hint,
+        sanitize_llm_comment,
+        should_show_hint,
+        template_comment,
+    )
     from .counter_strikle.solver import filter_candidates, recommend_guess
     from .counter_strikle.storage import InMemorySessionStore, build_session_key
 except ImportError:
+    from counter_strikle.commentary import (
+        build_llm_comment_prompt,
+        player_hint,
+        sanitize_llm_comment,
+        should_show_hint,
+        template_comment,
+    )
     from counter_strikle.solver import filter_candidates, recommend_guess
     from counter_strikle.storage import InMemorySessionStore, build_session_key
 
@@ -19,6 +34,13 @@ except ImportError:
     filter = None
 
 store = InMemorySessionStore()
+
+
+@dataclass(frozen=True)
+class CommandResponse:
+    text: str
+    llm_prompt: str | None = None
+    llm_fallback: str = ""
 
 
 def help_text() -> str:
@@ -52,6 +74,19 @@ def help_text() -> str:
 
 
 def handle_command(command: str, platform: str, user_id: str, group_id: str | None = None) -> str:
+    return handle_command_response(command, platform, user_id, group_id).text
+
+
+def handle_command_response(
+    command: str,
+    platform: str,
+    user_id: str,
+    group_id: str | None = None,
+    *,
+    enable_template_commentary: bool = True,
+    enable_hints: bool = True,
+    llm_comment_max_chars: int = 32,
+) -> CommandResponse:
     """Framework-agnostic command handler used by the AstrBot adapter."""
     command = normalize_command(command)
     parts = command.split(maxsplit=1)
@@ -60,53 +95,63 @@ def handle_command(command: str, platform: str, user_id: str, group_id: str | No
     key = build_session_key(platform, group_id, user_id)
 
     if action in {"/cs", "/cs帮助", "/cshelp", "/cs help"}:
-        return help_text()
+        return CommandResponse(help_text())
 
     if action == "/cs开始":
         store.start(key)
-        return "Counter-Strikle 开始。你有 8 次机会，发送 /cs猜 <选手名>。"
+        return CommandResponse("Counter-Strikle 开始。你有 8 次机会，发送 /cs猜 <选手名>。")
 
     if action == "/cs放弃":
         session = store.end(key)
         if not session:
-            return "你现在没有进行中的 Counter-Strikle。"
-        return f"本局结束，答案是 {session.game.answer.name}。"
+            return CommandResponse("你现在没有进行中的 Counter-Strikle。")
+        return CommandResponse(f"本局结束，答案是 {session.game.answer.name}。")
 
     session = store.get(key)
     if not session:
-        return "你还没有开始游戏，先发送 /cs开始。"
+        return CommandResponse("你还没有开始游戏，先发送 /cs开始。")
 
     if action == "/cs状态":
-        return f"当前进度：{len(session.game.guesses)}/{session.game.max_guesses}。"
+        return CommandResponse(f"当前进度：{len(session.game.guesses)}/{session.game.max_guesses}。")
 
     if action == "/cs建议":
         candidates = filter_candidates(session.game.players, session.game.guesses)
         suggestion = recommend_guess(candidates)
         if suggestion is None:
-            return "当前没有可推荐候选，可能数据或反馈规则需要检查。"
-        return f"建议下一猜：{suggestion.name}。剩余候选约 {len(candidates)} 人。"
+            return CommandResponse("当前没有可推荐候选，可能数据或反馈规则需要检查。")
+        return CommandResponse(f"建议下一猜：{suggestion.name}。剩余候选约 {len(candidates)} 人。")
 
     if action == "/cs猜":
         if not arg:
-            return "用法：/cs猜 <选手名>"
+            return CommandResponse("用法：/cs猜 <选手名>")
         try:
             result = session.game.guess(arg)
         except ValueError as exc:
-            return str(exc)
+            return CommandResponse(str(exc))
 
         lines = [
             f"第 {result.guess_count}/{result.max_guesses} 猜：{result.guess.name}",
             *_format_feedback(result),
         ]
+        fallback_comment = template_comment(result)
+        if enable_template_commentary:
+            lines.append("")
+            lines.append(f"评价：{fallback_comment}")
+        if enable_hints and should_show_hint(result):
+            lines.append(f"提示：{player_hint(result)}")
         if result.solved:
             store.end(key)
             lines.append("猜中了。")
         elif session.game.is_finished:
             store.end(key)
             lines.append(f"次数用完，答案是 {result.answer.name}。")
-        return "\n".join(lines)
+        return CommandResponse(
+            "\n".join(lines),
+            llm_prompt=build_llm_comment_prompt(result, fallback_comment, llm_comment_max_chars),
+            llm_fallback=fallback_comment,
+        )
 
-    return help_text()
+    return CommandResponse(help_text())
 
 
 def normalize_command(message: str) -> str:
@@ -215,8 +260,9 @@ def _format_feedback(result) -> list[str]:
 
 
 class CounterStriklePlugin(Star):
-    def __init__(self, context: Context):
+    def __init__(self, context: Context, config: Any = None):
         super().__init__(context)
+        self.config = config or {}
 
     if filter is not None:
 
@@ -228,6 +274,49 @@ class CounterStriklePlugin(Star):
                 return
 
             platform, user_id, group_id = get_event_identity(event)
-            response = handle_command(message, platform=platform, user_id=user_id, group_id=group_id)
+            response = handle_command_response(
+                message,
+                platform=platform,
+                user_id=user_id,
+                group_id=group_id,
+                enable_template_commentary=bool(self.config.get("enable_template_commentary", True)),
+                enable_hints=bool(self.config.get("enable_hints", True)),
+                llm_comment_max_chars=int(self.config.get("llm_comment_max_chars", 32)),
+            )
+            text = response.text
+            if self.config.get("enable_llm_commentary", False) and response.llm_prompt:
+                llm_comment = await self._generate_llm_comment(event, response)
+                if llm_comment:
+                    text = replace_comment_line(text, llm_comment)
             event.stop_event()
-            yield event.plain_result(response)
+            yield event.plain_result(text)
+
+    async def _generate_llm_comment(
+        self,
+        event: AstrMessageEvent,
+        response: CommandResponse,
+    ) -> str | None:
+        try:
+            provider_id = await self.context.get_current_chat_provider_id(umo=event.unified_msg_origin)
+            if not provider_id:
+                return None
+            llm_resp = await self.context.llm_generate(
+                chat_provider_id=provider_id,
+                prompt=response.llm_prompt,
+            )
+            return sanitize_llm_comment(
+                getattr(llm_resp, "completion_text", ""),
+                response.llm_fallback,
+                int(self.config.get("llm_comment_max_chars", 32)),
+            )
+        except Exception:
+            return None
+
+
+def replace_comment_line(text: str, comment: str) -> str:
+    lines = text.splitlines()
+    for index, line in enumerate(lines):
+        if line.startswith("评价："):
+            lines[index] = f"评价：{comment}"
+            return "\n".join(lines)
+    return f"{text}\n评价：{comment}"

@@ -23,6 +23,8 @@ class Player:
     team: str
     majors: int
     roles: tuple[str, ...]
+    hint: str = ""
+    trivia: str = ""
 
 
 @dataclass(frozen=True)
@@ -41,4 +43,3 @@ class PlayerGuessResult:
     solved: bool
     guess_count: int
     max_guesses: int
-

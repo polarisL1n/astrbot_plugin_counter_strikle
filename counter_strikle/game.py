@@ -23,6 +23,8 @@ def load_players(path: Path = DATA_PATH) -> list[Player]:
             team=item["team"],
             majors=int(item["majors"]),
             roles=tuple(item["roles"]),
+            hint=item.get("hint", ""),
+            trivia=item.get("trivia", ""),
         )
         for item in raw_players
     ]

@@ -1,4 +1,4 @@
-from main import handle_command, is_counter_strikle_command, normalize_command
+from main import handle_command, handle_command_response, is_counter_strikle_command, normalize_command
 
 
 def test_cs_root_command_returns_onboarding_help():
@@ -21,3 +21,35 @@ def test_command_prefix_detection():
     assert is_counter_strikle_command("/cs开始")
     assert not is_counter_strikle_command("今天聊 cs 吗")
     assert not is_counter_strikle_command("/csgo")
+
+
+def test_guess_response_includes_short_commentary():
+    handle_command("/cs开始", platform="comment-test", group_id="group-1", user_id="user-1")
+
+    text = handle_command("/cs猜 m0NESY", platform="comment-test", group_id="group-1", user_id="user-1")
+
+    assert "评价：" in text
+
+
+def test_fourth_guess_response_includes_hint():
+    handle_command("/cs开始", platform="hint-test", group_id="group-1", user_id="user-1")
+    for name in ["m0NESY", "ZywOo", "NiKo"]:
+        handle_command(f"/cs猜 {name}", platform="hint-test", group_id="group-1", user_id="user-1")
+
+    text = handle_command("/cs猜 ropz", platform="hint-test", group_id="group-1", user_id="user-1")
+
+    assert "提示：" in text
+
+
+def test_guess_response_exposes_llm_prompt_for_adapter():
+    handle_command("/cs开始", platform="llm-test", group_id="group-1", user_id="user-1")
+
+    response = handle_command_response(
+        "/cs猜 m0NESY",
+        platform="llm-test",
+        group_id="group-1",
+        user_id="user-1",
+    )
+
+    assert response.llm_prompt
+    assert response.llm_fallback

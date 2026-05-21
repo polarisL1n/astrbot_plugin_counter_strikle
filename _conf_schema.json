@@ -1,0 +1,24 @@
+{
+  "enable_llm_commentary": {
+    "description": "启用 LLM 生成猜测短评价",
+    "type": "bool",
+    "default": false,
+    "hint": "关闭时使用本地模板评价；开启后会调用当前会话使用的聊天模型。"
+  },
+  "enable_template_commentary": {
+    "description": "启用本地模板短评价",
+    "type": "bool",
+    "default": true
+  },
+  "enable_hints": {
+    "description": "第 4 次未猜中时给出趣味提示",
+    "type": "bool",
+    "default": true
+  },
+  "llm_comment_max_chars": {
+    "description": "LLM 短评价最大字数",
+    "type": "int",
+    "default": 32,
+    "hint": "建议保持较短，避免干扰游戏反馈。"
+  }
+}
