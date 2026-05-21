@@ -1,11 +1,22 @@
 from __future__ import annotations
 
+from typing import Any
+
 try:
     from .counter_strikle.solver import filter_candidates, recommend_guess
     from .counter_strikle.storage import InMemorySessionStore, build_session_key
 except ImportError:
     from counter_strikle.solver import filter_candidates, recommend_guess
     from counter_strikle.storage import InMemorySessionStore, build_session_key
+
+try:
+    from astrbot.api.event import AstrMessageEvent, filter
+    from astrbot.api.star import Context, Star
+except ImportError:
+    AstrMessageEvent = Any
+    Context = Any
+    Star = object
+    filter = None
 
 store = InMemorySessionStore()
 
@@ -25,8 +36,11 @@ def help_text() -> str:
             "UP / DOWN = 答案比你猜的数值更大 / 更小",
             "",
             "常用命令：",
+            "/cs - 查看这份说明",
             "/cs开始 - 开始一局",
+            "/cs 开始 - 同上",
             "/cs猜 <选手名> - 提交猜测，例如 /cs猜 m0NESY",
+            "/cs 猜 <选手名> - 同上",
             "/cs状态 - 查看当前进度",
             "/cs建议 - 查看下一猜建议",
             "/cs放弃 - 结束当前局并公布答案",
@@ -39,7 +53,8 @@ def help_text() -> str:
 
 def handle_command(command: str, platform: str, user_id: str, group_id: str | None = None) -> str:
     """Framework-agnostic command handler used by the AstrBot adapter."""
-    parts = command.strip().split(maxsplit=1)
+    command = normalize_command(command)
+    parts = command.split(maxsplit=1)
     action = parts[0] if parts else ""
     arg = parts[1] if len(parts) > 1 else ""
     key = build_session_key(platform, group_id, user_id)
@@ -94,6 +109,97 @@ def handle_command(command: str, platform: str, user_id: str, group_id: str | No
     return help_text()
 
 
+def normalize_command(message: str) -> str:
+    stripped = message.strip()
+    lowered = stripped.lower()
+    compact_commands = {
+        "cs": "/cs",
+        "/cs": "/cs",
+        "/cs help": "/cs",
+        "/cs 帮助": "/cs",
+        "/cs开始": "/cs开始",
+        "/cs 开始": "/cs开始",
+        "/csstart": "/cs开始",
+        "/cs start": "/cs开始",
+        "/cs状态": "/cs状态",
+        "/cs 状态": "/cs状态",
+        "/csstatus": "/cs状态",
+        "/cs status": "/cs状态",
+        "/cs建议": "/cs建议",
+        "/cs 建议": "/cs建议",
+        "/cshint": "/cs建议",
+        "/cs hint": "/cs建议",
+        "/cs放弃": "/cs放弃",
+        "/cs 放弃": "/cs放弃",
+        "/csgiveup": "/cs放弃",
+        "/cs giveup": "/cs放弃",
+        "/cs帮助": "/cs",
+        "/cshelp": "/cs",
+    }
+    if lowered in compact_commands:
+        return compact_commands[lowered]
+
+    for prefix in ("/cs猜 ", "/cs 猜 ", "/csguess ", "/cs guess "):
+        if lowered.startswith(prefix):
+            return f"/cs猜 {stripped[len(prefix):].strip()}"
+
+    return stripped
+
+
+def is_counter_strikle_command(message: str) -> bool:
+    stripped = message.strip()
+    lowered = stripped.lower()
+    return lowered == "cs" or lowered == "/cs" or lowered.startswith("/cs ") or lowered.startswith(
+        ("/cs开始", "/cs猜", "/cs状态", "/cs建议", "/cs放弃", "/cs帮助", "/cshelp")
+    )
+
+
+def get_event_identity(event: AstrMessageEvent) -> tuple[str, str, str | None]:
+    message_obj = getattr(event, "message_obj", None)
+    platform = (
+        _call_or_none(event, "get_platform_name")
+        or _get_nested(message_obj, "platform_name")
+        or _get_nested(message_obj, "adapter")
+        or "astrbot"
+    )
+    user_id = (
+        _call_or_none(event, "get_sender_id")
+        or _get_nested(message_obj, "sender.user_id")
+        or _get_nested(message_obj, "sender_id")
+        or _get_nested(message_obj, "user_id")
+        or _call_or_none(event, "get_sender_name")
+        or "unknown-user"
+    )
+    group_id = (
+        _call_or_none(event, "get_group_id")
+        or _get_nested(message_obj, "group_id")
+        or _get_nested(message_obj, "raw_message.group_id")
+    )
+    return str(platform), str(user_id), str(group_id) if group_id else None
+
+
+def _call_or_none(obj: object, method_name: str) -> object | None:
+    method = getattr(obj, method_name, None)
+    if not callable(method):
+        return None
+    try:
+        return method()
+    except Exception:
+        return None
+
+
+def _get_nested(obj: object, path: str) -> object | None:
+    current = obj
+    for part in path.split("."):
+        if current is None:
+            return None
+        if isinstance(current, dict):
+            current = current.get(part)
+        else:
+            current = getattr(current, part, None)
+    return current
+
+
 def _format_feedback(result) -> list[str]:
     icons = {
         "match": "OK",
@@ -106,3 +212,22 @@ def _format_feedback(result) -> list[str]:
         f"{item.field}: {item.guessed} {icons[item.kind.value]} {item.note}".rstrip()
         for item in result.feedback
     ]
+
+
+class CounterStriklePlugin(Star):
+    def __init__(self, context: Context):
+        super().__init__(context)
+
+    if filter is not None:
+
+        @filter.event_message_type(filter.EventMessageType.ALL)
+        async def on_message(self, event: AstrMessageEvent):
+            """处理 Counter-Strikle 指令。"""
+            message = getattr(event, "message_str", "")
+            if not is_counter_strikle_command(message):
+                return
+
+            platform, user_id, group_id = get_event_identity(event)
+            response = handle_command(message, platform=platform, user_id=user_id, group_id=group_id)
+            event.stop_event()
+            yield event.plain_result(response)
