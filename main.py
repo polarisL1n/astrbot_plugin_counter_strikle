@@ -9,12 +9,26 @@ store = InMemorySessionStore()
 def help_text() -> str:
     return "\n".join(
         [
-            "Counter-Strikle 指令：",
+            "Counter-Strikle 新手教程",
+            "",
+            "玩法：Bot 会随机选一名 CS2 选手，你有 8 次机会猜出答案。",
+            "每次猜测后，会根据年龄、国籍、队伍、Major 数量、位置给出反馈。",
+            "",
+            "反馈说明：",
+            "OK = 完全匹配",
+            "~ = 半匹配，比如同大洲或位置有重叠",
+            "X = 不匹配",
+            "UP / DOWN = 答案比你猜的数值更大 / 更小",
+            "",
+            "常用命令：",
             "/cs开始 - 开始一局",
-            "/cs猜 <选手名> - 提交猜测",
+            "/cs猜 <选手名> - 提交猜测，例如 /cs猜 m0NESY",
             "/cs状态 - 查看当前进度",
             "/cs建议 - 查看下一猜建议",
-            "/cs放弃 - 结束当前局",
+            "/cs放弃 - 结束当前局并公布答案",
+            "/cs帮助 - 查看这份说明",
+            "",
+            "会话隔离：每个人的游戏互不影响，群里其他人可以正常聊天。",
         ]
     )
 
@@ -26,7 +40,7 @@ def handle_command(command: str, platform: str, user_id: str, group_id: str | No
     arg = parts[1] if len(parts) > 1 else ""
     key = build_session_key(platform, group_id, user_id)
 
-    if action in {"/cs帮助", "/cshelp", "/cs帮助"}:
+    if action in {"/cs", "/cs帮助", "/cshelp", "/cs help"}:
         return help_text()
 
     if action == "/cs开始":
