@@ -1,0 +1,68 @@
+[
+  {
+    "id": "donk",
+    "name": "donk",
+    "aliases": ["Danil Kryshkovets"],
+    "age": 19,
+    "country": "Russia",
+    "continent": "Europe",
+    "team": "Team Spirit",
+    "majors": 2,
+    "roles": ["Rifler", "Entry"]
+  },
+  {
+    "id": "monesy",
+    "name": "m0NESY",
+    "aliases": ["Ilya Osipov", "monesy"],
+    "age": 20,
+    "country": "Russia",
+    "continent": "Europe",
+    "team": "Falcons",
+    "majors": 5,
+    "roles": ["AWPer"]
+  },
+  {
+    "id": "zywoo",
+    "name": "ZywOo",
+    "aliases": ["Mathieu Herbaut"],
+    "age": 25,
+    "country": "France",
+    "continent": "Europe",
+    "team": "Vitality",
+    "majors": 8,
+    "roles": ["AWPer"]
+  },
+  {
+    "id": "ropz",
+    "name": "ropz",
+    "aliases": ["Robin Kool"],
+    "age": 26,
+    "country": "Estonia",
+    "continent": "Europe",
+    "team": "Vitality",
+    "majors": 10,
+    "roles": ["Rifler", "Lurker"]
+  },
+  {
+    "id": "niko",
+    "name": "NiKo",
+    "aliases": ["Nikola Kovac"],
+    "age": 29,
+    "country": "Bosnia and Herzegovina",
+    "continent": "Europe",
+    "team": "Falcons",
+    "majors": 15,
+    "roles": ["Rifler"]
+  },
+  {
+    "id": "karrigan",
+    "name": "karrigan",
+    "aliases": ["Finn Andersen"],
+    "age": 36,
+    "country": "Denmark",
+    "continent": "Europe",
+    "team": "FaZe Clan",
+    "majors": 19,
+    "roles": ["IGL", "Rifler"]
+  }
+]
