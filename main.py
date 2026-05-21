@@ -58,15 +58,15 @@ def help_text() -> str:
             "UP / DOWN = 答案比你猜的数值更大 / 更小",
             "",
             "常用命令：",
-            "/cs - 查看这份说明",
-            "/cs开始 - 开始一局",
-            "/cs 开始 - 同上",
-            "/cs猜 <选手名> - 提交猜测，例如 /cs猜 m0NESY",
-            "/cs 猜 <选手名> - 同上",
-            "/cs状态 - 查看当前进度",
-            "/cs建议 - 查看下一猜建议",
-            "/cs放弃 - 结束当前局并公布答案",
-            "/cs帮助 - 查看这份说明",
+            "猜选手 - 查看这份说明",
+            "猜选手 开始 - 开始一局",
+            "猜选手 猜 <选手名> - 提交猜测，例如 猜选手 猜 m0NESY",
+            "猜选手 状态 - 查看当前进度",
+            "猜选手 建议 - 查看下一猜建议",
+            "猜选手 放弃 - 结束当前局并公布答案",
+            "猜选手 帮助 - 查看这份说明",
+            "",
+            "兼容命令：cs、/cs、/cs开始、/cs猜 <选手名>",
             "",
             "会话隔离：每个人的游戏互不影响，群里其他人可以正常聊天。",
         ]
@@ -99,7 +99,7 @@ def handle_command_response(
 
     if action == "/cs开始":
         store.start(key)
-        return CommandResponse("Counter-Strikle 开始。你有 8 次机会，发送 /cs猜 <选手名>。")
+        return CommandResponse("Counter-Strikle 开始。你有 8 次机会，发送 猜选手 猜 <选手名>。")
 
     if action == "/cs放弃":
         session = store.end(key)
@@ -109,7 +109,7 @@ def handle_command_response(
 
     session = store.get(key)
     if not session:
-        return CommandResponse("你还没有开始游戏，先发送 /cs开始。")
+        return CommandResponse("你还没有开始游戏，先发送 猜选手 开始。")
 
     if action == "/cs状态":
         return CommandResponse(f"当前进度：{len(session.game.guesses)}/{session.game.max_guesses}。")
@@ -123,7 +123,7 @@ def handle_command_response(
 
     if action == "/cs猜":
         if not arg:
-            return CommandResponse("用法：/cs猜 <选手名>")
+            return CommandResponse("用法：猜选手 猜 <选手名>")
         try:
             result = session.game.guess(arg)
         except ValueError as exc:
@@ -159,6 +159,21 @@ def normalize_command(message: str) -> str:
     lowered = stripped.lower()
     compact_commands = {
         "cs": "/cs",
+        "猜选手": "/cs",
+        "猜选手 help": "/cs",
+        "猜选手 帮助": "/cs",
+        "猜选手开始": "/cs开始",
+        "猜选手 开始": "/cs开始",
+        "猜选手 start": "/cs开始",
+        "猜选手状态": "/cs状态",
+        "猜选手 状态": "/cs状态",
+        "猜选手 status": "/cs状态",
+        "猜选手建议": "/cs建议",
+        "猜选手 建议": "/cs建议",
+        "猜选手 hint": "/cs建议",
+        "猜选手放弃": "/cs放弃",
+        "猜选手 放弃": "/cs放弃",
+        "猜选手 giveup": "/cs放弃",
         "/cs": "/cs",
         "/cs help": "/cs",
         "/cs 帮助": "/cs",
@@ -187,6 +202,9 @@ def normalize_command(message: str) -> str:
     for prefix in ("/cs猜 ", "/cs 猜 ", "/csguess ", "/cs guess "):
         if lowered.startswith(prefix):
             return f"/cs猜 {stripped[len(prefix):].strip()}"
+    for prefix in ("猜选手猜 ", "猜选手 猜 ", "猜选手 guess "):
+        if lowered.startswith(prefix):
+            return f"/cs猜 {stripped[len(prefix):].strip()}"
 
     return stripped
 
@@ -194,8 +212,16 @@ def normalize_command(message: str) -> str:
 def is_counter_strikle_command(message: str) -> bool:
     stripped = message.strip()
     lowered = stripped.lower()
-    return lowered == "cs" or lowered == "/cs" or lowered.startswith("/cs ") or lowered.startswith(
+    return (
+        lowered == "cs"
+        or lowered == "/cs"
+        or lowered == "猜选手"
+        or lowered.startswith("猜选手 ")
+        or lowered.startswith(("猜选手开始", "猜选手猜", "猜选手状态", "猜选手建议", "猜选手放弃", "猜选手帮助"))
+        or lowered.startswith("/cs ")
+        or lowered.startswith(
         ("/cs开始", "/cs猜", "/cs状态", "/cs建议", "/cs放弃", "/cs帮助", "/cshelp")
+    )
     )
 
 
