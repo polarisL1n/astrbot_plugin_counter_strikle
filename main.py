@@ -1,7 +1,11 @@
 from __future__ import annotations
 
-from counter_strikle.solver import filter_candidates, recommend_guess
-from counter_strikle.storage import InMemorySessionStore, build_session_key
+try:
+    from .counter_strikle.solver import filter_candidates, recommend_guess
+    from .counter_strikle.storage import InMemorySessionStore, build_session_key
+except ImportError:
+    from counter_strikle.solver import filter_candidates, recommend_guess
+    from counter_strikle.storage import InMemorySessionStore, build_session_key
 
 store = InMemorySessionStore()
 
