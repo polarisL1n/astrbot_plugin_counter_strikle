@@ -11,7 +11,7 @@ The plugin is designed for group chats: each player gets an isolated game sessio
 - Compare age, nationality, continent, team, Major count, and roles.
 - Track up to 8 guesses per game.
 - Keep game commands separate from ordinary chat context.
-- Provide a small local player dataset for development.
+- Provide a 40-player local seed dataset for development.
 
 Planned:
 
@@ -19,6 +19,10 @@ Planned:
 - Larger player database.
 - Optional BLAST data sync.
 - MCP tools for external agent access.
+
+## Data Notes
+
+The bundled player data is a local gameplay snapshot, not an authoritative esports database. Fields such as team, age, and Major count should be maintained or synced before treating them as current facts.
 
 ## Commands
 
