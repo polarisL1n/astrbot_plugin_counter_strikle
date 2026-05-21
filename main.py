@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import re
 from typing import Any
 
 try:
@@ -52,10 +53,10 @@ def help_text() -> str:
             "每次猜测后，会根据年龄、国籍、队伍、Major 数量、位置给出反馈。",
             "",
             "反馈说明：",
-            "OK = 完全匹配",
-            "~ = 半匹配，比如同大洲或位置有重叠",
-            "X = 不匹配",
-            "UP / DOWN = 答案比你猜的数值更大 / 更小",
+            "完全匹配 = 这个字段猜对了",
+            "半匹配 = 接近但不完全一样，比如同大洲或位置有重叠",
+            "不匹配 = 这个字段不对",
+            "答案更大 / 答案更小 = 年龄或 Major 数量的方向提示",
             "",
             "常用命令：",
             "猜选手 - 查看这份说明",
@@ -199,6 +200,14 @@ def normalize_command(message: str) -> str:
     if lowered in compact_commands:
         return compact_commands[lowered]
 
+    flexible_guess_match = re.match(
+        r"^(?:/cs|猜选手)\s*(?:猜|guess)\s*[:：]?\s*<?([^<>]+)>?$",
+        stripped,
+        flags=re.IGNORECASE,
+    )
+    if flexible_guess_match:
+        return f"/cs猜 {flexible_guess_match.group(1).strip()}"
+
     for prefix in ("/cs猜 ", "/cs 猜 ", "/csguess ", "/cs guess "):
         if lowered.startswith(prefix):
             return f"/cs猜 {stripped[len(prefix):].strip()}"
@@ -272,15 +281,40 @@ def _get_nested(obj: object, path: str) -> object | None:
 
 
 def _format_feedback(result) -> list[str]:
-    icons = {
-        "match": "OK",
-        "partial": "~",
-        "miss": "X",
-        "higher": "UP",
-        "lower": "DOWN",
+    labels = {
+        "age": "年龄",
+        "country": "国籍",
+        "team": "队伍",
+        "majors": "Major 数",
+        "roles": "位置",
+    }
+    statuses = {
+        "match": "完全匹配",
+        "partial": "半匹配",
+        "miss": "不匹配",
+        "higher": "答案更大",
+        "lower": "答案更小",
+    }
+    notes = {
+        "close": "差距较小",
+        "far": "差距较大",
+        "same continent": "同大洲",
     }
     return [
-        f"{item.field}: {item.guessed} {icons[item.kind.value]} {item.note}".rstrip()
+        "：".join(
+            [
+                labels.get(item.field, item.field),
+                " ".join(
+                    part
+                    for part in [
+                        str(item.guessed),
+                        statuses[item.kind.value],
+                        notes.get(item.note, item.note),
+                    ]
+                    if part
+                ),
+            ]
+        )
         for item in result.feedback
     ]
 

@@ -16,6 +16,8 @@ def test_normalize_spaced_commands():
     assert normalize_command("猜选手 开始") == "/cs开始"
     assert normalize_command("猜选手 猜 monesy") == "/cs猜 monesy"
     assert normalize_command("猜选手 guess m0NESY") == "/cs猜 m0NESY"
+    assert normalize_command("猜选手 猜<m0nesy>") == "/cs猜 m0nesy"
+    assert normalize_command("猜选手 猜：m0nesy") == "/cs猜 m0nesy"
 
 
 def test_command_prefix_detection():
@@ -35,6 +37,10 @@ def test_guess_response_includes_short_commentary():
     text = handle_command("猜选手 猜 m0NESY", platform="comment-test", group_id="group-1", user_id="user-1")
 
     assert "评价：" in text
+    assert "年龄：" in text
+    assert "国籍：" in text
+    assert "age:" not in text
+    assert "same continent" not in text
 
 
 def test_fourth_guess_response_includes_hint():
